@@ -74,9 +74,20 @@ const main = async () => {
   })
 }
 
-main().catch(error => {
-  pushMessage({
-    type: 'error',
-    message: error.stack,
+const cron = require('node-cron');
+
+/**
+ * 定时任务执行 cron表达式，+8:00 为北京时间
+ * 0 23 * * * - docker中运行，每天早上7点（北京时间）执行
+ */
+cron.schedule('0 23 * * *', () => {
+  console.log('掘金签到执行');
+  // 在这里执行其他脚本逻辑
+  main().catch(error => {
+    pushMessage({
+      type: 'error',
+      message: error.stack,
+    })
   })
-})
+});
+console.log('定时任务服务已启动')

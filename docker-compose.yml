@@ -1,0 +1,16 @@
+version: '2.26.1'
+networks:
+  app_network:
+    driver: bridge
+services:
+  juejin:
+    image: node:16.15.0-alpine
+    build: . # 指向您的 Node.js 应用 Dockerfile
+    ports:
+      - "3000:3000" # 将容器的 3000 端口映射到主机的 3000 端口
+    environment:
+      - COOKIE=cookie-value # 掘金 cookie
+      - FEISHU_WEBHOOK=FEISHU_WEBHOOK # 飞书 webhook
+      # 如果需要其他的可以添加
+    networks:
+      - app_network

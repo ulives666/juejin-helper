@@ -2,7 +2,7 @@
   <img src="./docs/logo.svg" />
 </p>
 
-<h1 align="center">稀土掘金助手</h1>
+<h1 align="center">稀土掘金助手 - docker容器版</h1>
 
 <p align="center">
   <a href="https://github.com/remy/nodemon">
@@ -42,6 +42,17 @@
 | `PUSHPLUS_TOKEN` | 微信公众号`pushplus` `token` | 否 |
 | `DINGDING_WEBHOOK` | 钉钉机器人`Webhook` | 否 |
 | `FEISHU_WEBHOOK` | 飞书机器人`Webhook` | 否 |
+
+### docker容器运行
+`docker-compose.yml`
+```yml
+# 只需要配置docker启动的环境变量就可以了
+# 如果是docker-compose启动，配置在docker-compose中比较方便
+    environment:
+      - COOKIE=cookie-value # 掘金 cookie
+      - FEISHU_WEBHOOK=FEISHU_WEBHOOK # 飞书 webhook
+      # 如果需要其他的可以添加
+```
 
 ### 效果预览
 
